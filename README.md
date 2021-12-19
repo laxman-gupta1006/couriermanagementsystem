@@ -1,2 +1,1 @@
-# couriermanagementsystem
-This is my DBMS mini project.
+# Courier Management System
