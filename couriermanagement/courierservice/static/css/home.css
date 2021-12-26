@@ -1,0 +1,12 @@
+#front_image{
+    width: auto;
+    height: 600px;
+    margin-top: 10px;
+}
+#pagecontent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 5px 5px 10px black ;
+}
