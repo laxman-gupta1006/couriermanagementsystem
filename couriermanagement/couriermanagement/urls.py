@@ -22,4 +22,9 @@ urlpatterns = [
     path('',views.home),
     path('login/',views.login),
     path('aboutus/',views.aboutus),
+    path('signin/',views.signin),
+    path('adminpanel/',views.admin),
+    path('trackshipment/',views.track_shipment),
+    path('addshipment/',views.add_shipment),
+    path('updateshipment/',views.update_shipment),
 ]

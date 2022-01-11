@@ -5,8 +5,41 @@
 }
 #pagecontent{
     display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: 5px 5px 10px black ;
+    margin-top: 10px;
+}
+#track_form{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    box-shadow: 5px 5px 10px black ;
+    background: #fff;
+    box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 0.75em;
+    padding: 2em;
+    width: 25em;
+}
+#track_form input[type='text']{
+    height: 30px;
+    background: rgb(235, 234, 234);
+    border: none;
+    color: black;
+    margin: 5px;
+    outline: none;
+    border-radius: 10px;
+    padding: 3px;
+}
+.btn1{
+    background-color:  rgb(3, 56, 73);
+    border-radius: 5px;
+    color: #fff;
+    padding:10px 20px;
+    border: none;
+}
+#banner{
+    height: 600px;
+    width: 100%;
 }

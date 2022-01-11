@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static '/css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static '/css/admin.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastTrack | Admin</title>
+</head>
+
+<body>
+    {% include 'admin/admin_navbar.html' %}
+    <div id='admin_container'>
+        <div id="link_container"><a href="/trackshipment/">Track Shipment</a><a href="/addshipment/">Add shipment</a><a href="/updateshipment/">Update Location</a></div>
+        <div class='admin_forms'>
+           <form action="/addshipment" method="post">
+            <fieldset>
+             <h1>Add Shipment</h1>
+             <label for="custname">Customer Name:</label>
+             <input type="text" id="cust_name" name="cust_name"><br><br>
+             <label for="Phone">Customer Phone:</label>
+             <input type="text" id="cust_phone" name="cust_phone"><br><br>
+             <label for="address">Address:</label>
+             <input type="email" id="cust_address" name="cust_address"><br><br>
+             <label for="city">City:</label>
+             <input type="text" id="city" name="city"><br><br>
+             <label>Shipment Origin:</label>
+             <input type="text" id="origin_city" name="origin_city"><br><br>
+             <label>Shipment Destination:</label>
+             <input type="text" id="dest_city" name="dest_city"><br><br>
+             <label>Branch Id:</label>
+             <input type="text" id="branch" name="branch"><br><br>
+             <label>Pick up date:</label>
+             <input type="date" id="pick_up_date" name="pick_up_date"><br><br>
+            </fieldset>
+            <input type="submit" value="Add Shipment" class="btn1">
+        </form>
+        </div>    
+    </div>
+</body>
+</html>

@@ -9,9 +9,37 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-<link rel="stylesheet" href="{% static 'css/home.css' %}">
-<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+<link rel="stylesheet" href="{% static '/css/navbar.css' %}">
+<script type="text/javascript">
+
+window.onresize = reportWindowSize;
+
+function reportWindowSize() {
+	let width = window.innerWidth;
+	if (width >= 768) {
+		onMenuToggle("close");
+	}
+}
+
+function onMenuToggle(toggle) {
+    const menuToggle = document.querySelector(".mobile-menu");
+const menuClose = document.querySelector(".menu-close");
+const nav = document.querySelector(".nav-container");
+
+	if (toggle === "open") {
+		menuToggle.style.display = "none";
+		menuClose.style.display = "block";
+		nav.style.right = 0;
+	} else {
+		menuToggle.style.display = "flex";
+		menuClose.style.display = "none";
+		nav.style.right = "-440px";
+	}
+}
+
+</script>
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+<link rel="stylesheet" href="{% static '/css/footer.css' %}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet"> 
@@ -20,11 +48,19 @@
 <body>
     {% include "navbar.html" %}
     <div id="pagecontent">
+        <div id="track_form">
+            <h3>Track your shipment</h3>
+            <br>
+            <form action="/track/" method="post">
+            <center><input type="text" id="track_id" placeholder="Shipment id"><br>
+                <br>
+            <input type="submit" value="Track" class="btn1"></center>
+            </form>
+        </div>
         <div>
-            <p>Fastest courier Service</p>
-        <img src={% static "images/bitmap.png" %} id="front_image">
+        <img src={% static 'images/banner.jpg' %} id="banner">
         </div>
-        </div>
+    </div>
     {% include "footer.html" %}
 </body>
 </html>

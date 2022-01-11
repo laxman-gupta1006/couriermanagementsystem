@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static '/css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static '/css/admin.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastTrack | Admin</title>
+</head>
+
+<body>
+    {% include 'admin/admin_navbar.html' %}
+    <div id='admin_container'>
+<div id="link_container"><a href="/trackshipment/">Track Shipment</a><a href="/addshipment/">Add shipment</a><a href="/updateshipment/">Update Location</a></div>
+        <div class='admin_forms'>
+        <form action="/trackshipment" method="post">
+            <fieldset>
+             <h1>Track Shipment</h1>
+             <label for="shipmentid">Shipment Id:</label>
+             <input type="text" id="sid" name="sid"><br><br>
+            </fieldset>
+            <input type="submit" value="Track Shipment" class="btn1">
+        </form>
+        </div>
+
+    </div>
+</body>
+</html>
