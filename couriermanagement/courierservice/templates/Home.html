@@ -51,14 +51,34 @@ const nav = document.querySelector(".nav-container");
         <div id="track_form">
             <h3>Track your shipment</h3>
             <br>
-            <form action="/track/" method="post">
+            <form action="/trackshipment/" method="post">
+                {% csrf_token %}
             <center><input type="text" id="track_id" placeholder="Shipment id"><br>
                 <br>
             <input type="submit" value="Track" class="btn1"></center>
             </form>
         </div>
         <div>
+            {% if status == 'ok' %}
+            <table>
+                <tr>
+                <th>Shipment Id</th>
+                <th>Date_in</th>
+                <th>Date_out</th>
+                <th>Location</th>
+                <th>Branch</th>
+            </tr>
+            {% for i in result %}
+             <tr>
+                {% for j in i %}
+                    <td>{{j}}</td>
+                {% endfor %}
+             </tr>   
+            {% endfor %}
+        </table> 
+        {% else %}
         <img src={% static 'images/banner.jpg' %} id="banner">
+        {% endif %}
         </div>
     </div>
     {% include "footer.html" %}

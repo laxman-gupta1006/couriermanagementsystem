@@ -13,18 +13,36 @@
 <body>
     {% include 'admin/admin_navbar.html' %}
     <div id='admin_container'>
-<div id="link_container"><a href="/trackshipment/">Track Shipment</a><a href="/addshipment/">Add shipment</a><a href="/updateshipment/">Update Location</a></div>
-        <div class='admin_forms'>
-        <form action="/trackshipment" method="post">
+        {% include 'admin/Admin_navigator.html' %}
+                <div class='admin_forms'>
+        <form action="/trackshipment/" method="post">
+            {% csrf_token %}
             <fieldset>
              <h1>Track Shipment</h1>
-             <label for="shipmentid">Shipment Id:</label>
-             <input type="text" id="sid" name="sid"><br><br>
+             <label for="shipmentid" >Shipment Id:</label>
+             <input type="text" id="sid" name="sid" required><br><br>
             </fieldset>
             <input type="submit" value="Track Shipment" class="btn1">
         </form>
         </div>
-
+        {% if status == 'ok' %}
+        <table>
+            <tr>
+            <th>Shipment Id</th>
+            <th>Date_in</th>
+            <th>Date_out</th>
+            <th>Location</th>
+            <th>Branch</th>
+        </tr>
+        {% for i in result %}
+         <tr>
+            {% for j in i %}
+                <td>{{j}}</td>
+            {% endfor %}
+         </tr>   
+        {% endfor %}
+        {% endif %}
+    </table>
     </div>
 </body>
 </html>

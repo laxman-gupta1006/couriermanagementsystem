@@ -14,13 +14,14 @@
         <header class="login-cta">
           <h2>Account Login</h2>
         </header>
-        <form>
+        <form action="/login_admin/" method="post">
+          {% csrf_token %}
           <div class="form-row">
-            <input type="text" required>
+            <input type="text" name="username" required>
             <span>Username or Email</span>
           </div>
           <div class="form-row">
-            <input type="password" required>
+            <input type="password" name="password" required>
             <span>Password</span>
           </div>
           <div class="form-row"></div>

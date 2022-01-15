@@ -1,12 +1,36 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="{% static '/css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static '/css/admin.css' %}">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Track Shipment</title>
+    <title>FastTrack</title>
 </head>
+
 <body>
-    Track Shipment
+    {% include 'navbar.html' %}
+    <div>
+        {% if status == 'ok' %}
+        <table>
+            <tr>
+            <th>Shipment Id</th>
+            <th>Date_in</th>
+            <th>Date_out</th>
+            <th>Location</th>
+            <th>Branch</th>
+        </tr>
+        {% for i in result %}
+         <tr>
+            {% for j in i %}
+                <td>{{j}}</td>
+            {% endfor %}
+         </tr>   
+        {% endfor %}
+        {% endif %}
+    </table>
+    </div>
 </body>
 </html>

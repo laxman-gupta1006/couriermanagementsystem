@@ -13,21 +13,24 @@
 <body>
     {% include 'admin/admin_navbar.html' %}
     <div id='admin_container'>
-        <div id="link_container"><a href="/trackshipment/">Track Shipment</a><a href="/addshipment/">Add shipment</a><a href="/updateshipment/">Update Location</a></div>
+        {% include 'admin/Admin_navigator.html' %}
         <div class='admin_forms'>
-           <form action="/updateshipment">
+           <form action="/updateshipment/" method="post">
+               {% csrf_token %}
             <fieldset>
              <h1>Update Location</h1>
              <label>Shipment Id:</label>
-             <input type="text" id="sid" name="sid"><br><br>
-             <label>Date In:</label>
-             <input type="date" id="date_in" name="date_in"><br><br>
-             <label>Date_Out:</label>
-             <input type="date" id="date_out" name="date_out"><br><br>
+             <input type="text" id="sid" name="sid" required><br><br>
+             <input type="radio" name="status" value="IN">
+            <label for="contactChoice1">IN</label>
+            <input type="radio" name="status" value="OUT">
+            <label for="contactChoice2">OUT</label>
+             <label>Date:</label>
+             <input type="datetime-local" id="date_out" name="date" required><br><br>
              <label>Location:</label>
-             <input type="text" id="location" name="location"><br><br>
+             <input type="text" id="location" name="location" required><br><br>
              <label>Branch Id:</label>
-             <input type="text" id="branch" name="branch"><br><br>
+             <input type="text" id="branch" name="branch" required><br><br>
             </fieldset>
             <input type="submit" value="Update shipment" class="btn1">
            </form>

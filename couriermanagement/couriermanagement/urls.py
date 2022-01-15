@@ -20,7 +20,8 @@ from courierservice import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home),
-    path('login/',views.login),
+    path('login/',views.login_temp),
+    path('login_admin/',views.login_view),
     path('aboutus/',views.aboutus),
     path('signin/',views.signin),
     path('adminpanel/',views.admin),
