@@ -15,51 +15,18 @@
     <div id='admin_container'>
         {% include 'admin/Admin_navigator.html' %}
                 <div class='admin_forms'>
-           <form action="/addshipment/" method="post">
+           <form action="/addemployee/" method="post">
             {% csrf_token %}
-             <h1>Add Shipment</h1>
-             <div id="addshipmentdetails">
-                 <div>
-             <h3>Senders Details</h3>
+             <h1>Add Employee Details</h1>
              <label for="custname">Name:</label>
-             <input type="text" id="sender_name" name="sender_name" required><br><br>
+             <input type="text" id="name" name="name" required><br><br>
              <label for="Phone">Phone:</label>
-             <input type="text" id="sender_phone" name="sender_phone" required><br><br>
-             <label>Address:</label>
-             <textarea class="address" name="origin_city" required></textarea><br><br>
-             <label>Pincode:</label>
-             <input type="text" id="origin_pincode" name="origin_pincode" required><br><br>
-            </div>
-            <div>
-             <h3>Receivers Details</h3>
-             <label for="custname">Name:</label>
-             <input type="text" id="receivers_name" name="receivers_name" required><br><br>
-             <label for="Phone">Phone:</label>
-             <input type="text" id="receivers_phone" name="receivers_phone" required><br><br>
-             <label>Address:</label>
-             <textarea class="address" name="dest_city" required></textarea><br><br>
-             <label>Pincode:</label>
-             <input type="text" id="dest_pincode" name="dest_pincode" required><br><br>
-            </div>
-            </div>
-            <h3>Courier Branch</h3>
+             <input type="text" id="phone" name="phone" required><br><br>
              <label>Branch Id:</label>
-             <input type="text" id="branch" name="branch" required><br><br>
-             <label>Pick up date:</label>
-             <input type="date" id="pick_up_date" name="pick_up_date" required><br><br>
-            </fieldset>
-            {% if status == "error" %}
-            <p>Please fill again and rectify mistakes</p>
-            {% endif %}
-            {% if status == "wait" %}
-            {% endif %}
-            {% if status == "ok" %}
-            <h3>Please take note of Shipment_id for future reference</h3>
-            <h4>Customer Id: {{c_id}}</h4>
-            <h4>Shipment Id: {{s_id}}</h4>
-            {% endif %}
-            <input type="submit" value="Add Shipment" class="btn1">
-                
+             <input type="text" id="origin_pincode" name="branchid" required><br><br>
+             <h3>{{status}} </h3>
+             <input type="submit" value="Add Shipment" class="btn1">
+               
         </form>
         </div>    
     </div>

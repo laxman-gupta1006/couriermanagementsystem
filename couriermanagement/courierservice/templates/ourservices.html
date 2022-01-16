@@ -48,19 +48,52 @@ const nav = document.querySelector(".nav-container");
 <body>
     {% include "navbar.html" %}
     <div id="pagecontent">
-        <div id="track_form">
-            <h3>Track your shipment</h3>
-            <br>
-            <form action="/usertrackshipment/" method="post">
-                {% csrf_token %}
-            <center><input type="text" id="track_id" placeholder="Shipment id" name='sid' required><br>
-                <br>
-            <input type="submit" value="Track" class="btn1"></center>
-            </form>
-        </div>
-        <div>
-        <img src={% static 'images/banner.jpg' %} id="banner">
-        </div>
+        <table border="2">
+            <tr>
+                <th>
+                        Weight
+                </th>
+                <th>
+                    Local
+                </th>
+                <th>
+                    Up to 200 Kms.
+                </th>
+                <th>
+                    201 to 1000 Kms.
+                </th>
+                <th>
+                    1001 to 2000 Kms.
+                </th>
+                <th>
+                    Above 2000 Kms.
+                </th>
+            </tr>
+            <tr>
+                <td>Up to 50 grams</td>
+                <td>INR 15</td>
+                <td>INR 35</td>
+                <td>INR 35</td>
+                <td>INR 35</td>
+                <td>INR 35</td>
+            </tr>
+            <tr>
+                <td>51 grams to 200 grams</td>
+                <td>INR 25</td>
+                <td>INR 35</td>
+                <td>INR 40</td>
+                <td>INR 60</td>
+                <td>INR 70</td>
+            </tr>
+            <tr>
+                <td>201 grams to 500 grams</td>
+                <td>INR 30</td>
+                <td>INR 50</td>
+                <td>INR 60</td>
+                <td>INR 80</td>
+                <td>INR 90</td>
+            </tr>
+        </table>
     </div>
     {% include "footer.html" %}
 </body>

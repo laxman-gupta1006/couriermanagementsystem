@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static '/css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static '/css/admin.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastTrack | Admin</title>
+</head>
+
+<body>
+    {% include 'admin/admin_navbar.html' %}
+    <div id='admin_container'>
+        {% include 'admin/Admin_navigator.html' %}
+                <div class='admin_forms'>
+        </div>
+        {% if status == 'ok' %}
+        <table>
+            <tr>
+            <th>Shipment Id</th>
+            <th>Senders Address</th>
+            <th>Receivers Address</th>
+            <th>Customer Id</th>
+            <th>Origin Pincode</th>
+            <th>Destination Pincode</th>
+            <th>Receivers Name</th>
+            <th>Receivers Phone</th>
+            <th>Branch Id</th>
+            <th>Pickup date</th>    
+        </tr>
+        {% for i in result %}
+         <tr>
+            {% for j in i %}
+                <td>{{j}}</td>
+            {% endfor %}
+         </tr>   
+        {% endfor %}
+        {% endif %}
+    </table>
+    </div>
+</body>
+</html>

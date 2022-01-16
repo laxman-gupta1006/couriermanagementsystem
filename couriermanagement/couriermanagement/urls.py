@@ -28,4 +28,10 @@ urlpatterns = [
     path('trackshipment/',views.track_shipment),
     path('addshipment/',views.add_shipment),
     path('updateshipment/',views.update_shipment),
+    path('addemployee/',views.addemp),
+    path('listbranch/',views.listbranch),
+    path('listshipment/',views.listshipment),
+    path('usertrackshipment/',views.user_track_shipment),
+    path('ourservices/',views.ourservices),
+    path('contactus/',views.contactus),
 ]

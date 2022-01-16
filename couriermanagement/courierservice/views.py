@@ -2,7 +2,6 @@ from selectors import EpollSelector
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-import MySQLdb
 import uuid
 from django.db import connection
 # from libs.dbutil import query_to_dicts
@@ -16,7 +15,10 @@ def aboutus(request):
     return render(request,'Aboutus.html')
 def signin(request):
     return render(request,'signin.html')
-
+def ourservices(request):
+    return render(request,'ourservices.html')
+def contactus(request):
+    return render(request,'ContactUs.html')
 
 from django.contrib.auth import authenticate, login
 
@@ -43,7 +45,7 @@ def login_view(request):
 def admin(request):
     return render(request,'admin/admin.html')
 
-# @login_required(login_url='/login/')
+@login_required(login_url='/login/')
 def track_shipment(request):
     if request.method=="POST":
         s_id=request.POST.get('sid')
@@ -56,15 +58,8 @@ def track_shipment(request):
             result={'result':data,'status':'ok'}
         except:
             result={'status':'error'}
-        if request.user.is_authenticated:
-            return render(request,'admin/TrackShipment.html',result)
-        else:
-            print(result)
-            return render(request,'trackshipment.html',result)
-    if request.user.is_authenticated:
-        return render(request,'admin/TrackShipment.html')
-    else:
-        return render(request,'trackshipment.html')
+        return render(request,'admin/TrackShipment.html',result)
+    return render(request,'admin/TrackShipment.html')
 @login_required(login_url='/login/')
 def add_shipment(request):
     result={'status':'wait'}
@@ -114,4 +109,59 @@ def update_shipment(request):
         return render(request,'admin/UpdateShipment.html',result)
     return render(request,'admin/UpdateShipment.html')
     
-    
+@login_required(login_url='/login/')
+def addemp(request):
+    if request.method=="POST":
+        name=request.POST.get('name')
+        phone=request.POST.get('phone')
+        branch=request.POST.get('branchid')
+        e_id=uuid.uuid4()
+        e_id=str(e_id).replace("-","")
+        query1=f"INSERT INTO Employee VALUES ('{e_id}','{name}','{phone}','{branch}')"
+        c=connection.cursor()
+        c.execute(query1)
+        try:
+            c.execute(query1)
+            result={'status':'updated'}
+        except:
+            result={'status':'error'}
+        return render(request,'admin/AddEmployee.html',result)
+    return render(request,'admin/AddEmployee.html')
+@login_required(login_url='/login/')
+def listbranch(request):
+    result={}
+    query1=f"SELECT * FROM Branch"
+    try:
+        c=connection.cursor()
+        c.execute(query1)
+        data=c.fetchall()
+        result={'result':data,'status':'ok'}
+    except:
+        result={'status':'error'}
+    return render(request,'admin/ListBranch.html',result)
+@login_required(login_url='/login/')
+def listshipment(request):
+    result={}
+    query1=f"SELECT * FROM Shipment_details"
+    try:
+        c=connection.cursor()
+        c.execute(query1)
+        data=c.fetchall()
+        result={'result':data,'status':'ok'}
+    except:
+        result={'status':'error'}
+    return render(request,'admin/ListShipment.html',result)
+def user_track_shipment(request):
+    if request.method=="POST":
+        s_id=request.POST.get('sid')
+        query1=f"SELECT * FROM Shipment_history where S_ID='{s_id}'"
+        try:
+            c=connection.cursor()
+            c.execute(query1)
+            data=c.fetchall()
+            print(data)
+            result={'result':data,'status':'ok'}
+        except:
+            result={'status':'error'}
+        return render(request,'trackshipment.html',result)
+    return render(request,'trackshipment.html')
